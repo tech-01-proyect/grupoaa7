@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiteraMundo - Explorando la Literatura</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f5f1;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #5d4037, #8d6e63);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #3e2723;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #d7ccc8;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        
+        .posters-section {
+            margin-bottom: 3rem;
+        }
+        
+        .posters-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .poster-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .poster-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .poster-placeholder {
+            background-color: #f0f0f0;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #555;
+            border: 2px dashed #ccc;
+        }
+        
+        .poster-description {
+            padding: 1.5rem;
+        }
+        
+        .comparison-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .comparison-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .comparison-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-header {
+            background-color: #795548;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .comparison-content {
+            padding: 1.5rem;
+        }
+        
+        .comparison-item {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .comparison-icon {
+            min-width: 30px;
+            height: 30px;
+            background-color: #efebe9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            color: #5d4037;
+        }
+        
+        .comparison-text h4 {
+            margin: 0 0 5px 0;
+            color: #5d4037;
+        }
+        
+        .comparison-text p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .effectiveness {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #e0e0e0;
+        }
+        
+        .effectiveness-label {
+            font-weight: bold;
+            color: #5d4037;
+        }
+        
+        .effectiveness-bar {
+            background-color: #efebe9;
+            height: 8px;
+            width: 70%;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .effectiveness-fill {
+            height: 100%;
+            background-color: #8d6e63;
+        }
+        
+        .examples {
+            margin-top: 1rem;
+            background-color: #f5f5f5;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        
+        .highlight {
+            color: #795548;
+            font-weight: bold;
+        }
+        
+        .courses-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+     
+        }
+        
+        .course-card {
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        button {
+            background-color: #795548;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+        
+        button:hover {
+            background-color: #5d4037;
+        }
+        
+        footer {
+            background-color: #3e2723;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #795548;
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            padding: 1rem;
+            border-left: 4px solid #bcaaa4;
+            background-color: #f5f5f5;
+        }
+
+	.popup {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.8);
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s;
+            cursor: pointer; /* Hace que el cuadro sea clickeable */
+        }
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .popup img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+ <div id="popup" class="popup" onclick="goToPage()">
+        <h3>¡Oferta Especial!</h3>
+        <img id="popup-image" src="comida.jpeg" alt="Publicidad">
+        <button class="close-btn" onclick="event.stopPropagation(); closePopup()">Cerrar ❌</button>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        function goToPage() {
+            window.location.href = "vallapublicitaria.html";
+        }
+
+        setInterval(showPopup, 10000);
+    </script>
+    <header>
+        <h1>LiteraMundo</h1>
+        <p>El universo de las letras y la comunicación</p>
+    </header>
+    
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="cursos.html">Cursos</a>
+    </nav>
+    
+    <div class="container">
+        <section id="inicio" class="intro">
+            <h2>Bienvenidos a LiteraMundo</h2>
+            <p>Un espacio dedicado a explorar la literatura, la comunicación y la publicidad en el mundo digital. Descubre cómo las palabras dan forma a nuestras experiencias y cómo la era digital ha transformado la forma en que compartimos historias.</p>
+        </section>
+        
+        <section class="posters-section">
+            <h2>Carteles Publicitarios</h2>
+            <p>Nuestra colección de posts y vallas publicitarias exploran diferentes áreas y el impacto que tendrán a un grupo en específico.</p>
+            
+            <div class="posters-container">
+                <div class="poster-card">
+                    <div class="poster-placeholder">
+                        <img src="Generador.jpeg" alt="Imagen de Ejemplo" width="100%" height="100%">
+                    </div>
+                    <div class="poster-description">
+                        <h3>Post Publicitario sobre una Maquina de burbujas casero</h3>
+                                            </div>
+                </div>
+                
+                <div class="poster-card">
+                    <div class="poster-placeholder">
+                        <img src="biblioteca.jpeg" alt="Imagen de Ejemplo" width="100%" height="100%">
+                    </div>
+                    <div class="poster-description">
+                        <h3>Post Publicitario sobre una biblioteca</h3>
+                        
+                    </div>
+                </div>
+                
+                <div class="poster-card">
+                    <div class="poster-placeholder">
+                        <img src="comida.jpeg" alt="Imagen de Ejemplo" width="100%" height="100%">
+                    </div>
+                    <div class="poster-description">
+                        <h3>Valla Publicitaria</h3>
+                      
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <section class="posters-sections">
+            <h2>Publicidad en Sitios Web</h2>
+            <p>Análisis comparativo de las diferentes estrategias publicitarias utilizadas en plataformas digitales.</p>
+                        
+<section id="inicio" class="intro">
+<div class="posters-container">
+                <div class="poster-card">
+                    <div class="poster-placeholder">
+                        <img src="lite2.png" alt="Imagen de Ejemplo" width="100%" height="100%">
+                    </div>
+                    <div class="poster-description">
+                        <h3>¿Cuándo se considera publicidad?</h3>
+                                            </div>
+                </div>
+ <div class="poster-card">
+                    <div class="poster-placeholder">
+                        <img src="lite.png" alt="Imagen de Ejemplo" width="100%" height="100%">
+                    </div>
+                    <div class="poster-description">
+                        <h3>Cuadro comparativo</h3>
+                                            </div>
+                </div>
+                
+</section>
+            
+          <section id="cursos" class="courses-section">
+            <h2>Temas de interés</h2>
+            
+            <div class="course-card">
+                <h3>Narrativa Digital</h3>
+                <p>Explora las nuevas formas de contar historias en la era digital, desde hiperficción hasta narrativas interactivas.</p>
+                
+            </div>
+            
+            <div class="course-card">
+                <h3>Copywriting Literario</h3>
+                <p>Aprende a crear textos publicitarios con calidad literaria que conecten con tu audiencia.</p>
+                
+            </div>
+            
+            <div class="course-card">
+                <h3>Marketing Editorial</h3>
+                <p>Estrategias para promocionar obras literarias en plataformas digitales y tradicionales.</p>
+                
+            </div>
+            
+            <div class="course-card">
+                <h3>Análisis de Discurso Publicitario</h3>
+                <p>Herramientas para deconstruir y comprender la retórica publicitaria en diferentes medios.</p>
+                
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <h3>LiteraMundo</h3>
+        <p>Explorando la intersección entre literatura y publicidad desde 2025</p>
+        <p>Contacto: info@literamundo.edu</p>
+    </footer>
+</body>
+</html>

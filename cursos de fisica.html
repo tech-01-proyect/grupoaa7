@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Física | Portal Educativo</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Variables de color */
+        :root {
+            --primary-color: #2874a6;
+            --secondary-color: #3498db;
+            --accent-color: #5dade2;
+            --light-color: #d6eaf8;
+            --dark-color: #1a5276;
+            --text-color: #333333;
+        }
+        
+        /* Encabezado simplificado */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        /* Banner principal */
+        .banner {
+            height: 400px;
+            background-image: url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .banner h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .banner p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Contenido principal */
+        main {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--dark-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        /* Sección de temas */
+        .topics-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .topic-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .topic-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .topic-content {
+            padding: 20px;
+        }
+        
+        .topic-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        /* Sección de video */
+        .video-section {
+            background-color: var(--light-color);
+            padding: 60px 20px;
+            text-align: center;
+            margin: 50px 0;
+            border-radius: 10px;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 30px auto 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Sección de materiales */
+        .materials {
+            margin: 50px 0;
+        }
+        
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .material-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        
+        .material-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .material-icon i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        /* Pie de página simplificado */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .banner h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Encabezado simplificado -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                 <img src="logotipo.jpeg" alt="Imagen de Ejemplo" width="60" height="30">
+                <h1>Curso de Física</h1>
+            </div>
+        </div>
+            <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="cursos.html" class="active">Cursos</a>
+            </div>
+    </header>
+    <!-- Banner del curso -->
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Física: Fundamentos y Aplicaciones</h1>
+            <p>Descubre los principios fundamentales que rigen el universo y aprende a analizar los fenómenos físicos que nos rodean.</p>
+        </div>
+    </section>
+    
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección de introducción -->
+        <section>
+            <h2 class="section-title">Introducción al MCUV</h2>
+            <p>En este curso exploraremos sobre el concepto de Movimiento Circular Uniformemente Variado a través de explicaciones claras, experimentos prácticos y aplicaciones del mundo real, comprenderás cómo la física explica los fenómenos naturales y tecnológicos que nos rodean. Nuestro enfoque práctico te permitirá no solo entender las teorías, sino también aplicarlas en situaciones reales, desarrollando tu pensamiento crítico y tus habilidades de resolución de problemas.</p>
+        </section>
+        
+        <!-- Sección de temas -->
+        <section id="topics" class="topics">
+            <h2 class="section-title">Temas a recordar</h2>
+            <div class="topics-container">
+                <!-- Tema 1 -->
+                <div class="topic-card">
+                   <img src="cinematica.jpeg" alt="Imagen de Ejemplo" width="400" height="300">
+                    <div class="topic-content">
+                        <h3>Cinemática</h3>
+                        <p>Es una rama de la física que estudia el movimiento de los objetos sólidos y su trayectoria en función del tiempo, sin tomar en cuenta el origen de las fuerzas que lo motivan. Para eso, se toma en consideración la velocidad (el cambio en el desplazamiento por unidad de tiempo) y la aceleración (cambio de velocidad) del objeto que se mueve.</p>
+                    </div>
+                </div>
+                
+                <!-- Tema 2 -->
+                <div class="topic-card">
+                     <img src="mcu.jpg" alt="Imagen de Ejemplo" width="400" height="300">
+                    <div class="topic-content">
+                        <h3>MCU</h3>
+                        <p>El movimiento circular uniforme (MCU) es un tipo específico de movimiento en el que un objeto se desplaza alrededor de un punto fijo en una trayectoria circular a una velocidad constante.
+
+En el MCU, la velocidad del objeto se mantiene invariable en magnitud y dirección a lo largo de su recorrido, lo que significa que la velocidad angular es constante.
+
+El movimiento circular uniforme se caracteriza por la relación entre la velocidad angular y la velocidad lineal, que está directamente relacionada con el radio de la trayectoria circular.</p>
+                    </div>
+                </div>
+                
+                <!-- Tema 3 -->
+                <div class="topic-card">
+                    <img src="MCUV.jpg" alt="Imagen de Ejemplo" width="400" height="300">
+                    <div class="topic-content">
+                        <h3>MCUV</h3>
+                        <p>El movimiento circular uniformemente variado (MCUV) es un concepto fundamental en la física, presente en diversos fenómenos cotidianos y en aplicaciones tecnológicas. A diferencia del movimiento circular uniforme, donde la velocidad angular permanece constante, en el MCUV la velocidad angular varía de forma constante a lo largo del tiempo debido a la presencia de una aceleración angular. Este tipo de movimiento es crucial para entender el comportamiento de sistemas rotativos, como motores, turbinas y mecanismos de transmisión de movimiento en máquinas y vehículos.</p>
+                    </div>
+                </div>
+            </div>
+
+ <!-- Sección de temas -->
+        <section id="topics" class="topics">
+            <h2 class="section-title">Ejemplo</h2>
+            <div class="topics-container">
+                <!-- Tema 1 -->
+                <div class="topic-card">
+                   <img src="maquinaburbujas.jpg" alt="Imagen de Ejemplo" width="400" height="300">
+                    <div class="topic-content">
+                        <h3>Máquina de burbujas casero</h3>
+                        <p>Una máquina de burbujas casera es un dispositivo que utiliza motores eléctricos para generar burbujas de manera continua. Su funcionamiento se basa en dos componentes principales: un disco giratorio que recoge la solución jabonosa y una hélice que sopla aire a través del disco para formar burbujas. Ambos elementos realizan movimientos circulares, lo que nos permite analizar dos tipos de movimiento: el Movimiento Circular Uniforme (MCU) y el Movimiento Circular Uniformemente Variado (MCUV).</p>
+                    </div>
+                </div>
+                
+                <!-- Tema 2 -->
+                <div class="topic-card">
+                     <img src="momentos.jpg" alt="Imagen de Ejemplo" width="400" height="300">
+                    <div class="topic-content">
+                        <h3>¿En que momentos se ve presente estos movimientos?</h3>
+                        <p>La máquina de burbujas casera es un excelente ejemplo de cómo funcionan los movimientos circulares en la vida real. Cuando la velocidad de giro es constante, observamos un MCU, mientras que en los momentos de encendido y apagado experimentamos un MCUV.</p>
+                    </div>
+                </div>
+                
+                <!-- Tema 3 -->
+                <div class="topic-card">
+                    <img src="maquina2.jpg" alt="Imagen de Ejemplo" width="400" height="300">
+                    <div class="topic-content">
+                        <h3>Materiales a utilizar</h3>
+                        <p>
+			<ul>
+			<li>Botella 330ml</li>
+			<li>Tijeras</li>
+			<li>Cartón</li>
+			<li>Disco</li>
+			<li>Cuatin</li>
+			<li>Silicon</li>
+			<li>Tapita de botella</li>
+			<li>Tornillo o palillo</li>
+			<li>2 Motores dc</li>	
+			<li>Jumpers</li>
+			<li>Switch</li>
+			<li>Hélice</li>
+			<li>Bateria de 9V</li>
+			</ul>
+                       </p>
+                    </div>
+                </div>
+            </div>        
+        <!-- Sección de video explicativo -->
+        <section class="video-section">
+            <h2 class="section-title">Videos explicativos</h2>
+            <p>En estos videos, te daremos una breve explicación del porqué la máquina de burbuja es considera parte de los Movimientos Circulares, así también como realizar paso a paso este experimento.</p>
+            <section id="topics" class="topics">
+            <h2 class="section-title">¿Por qué este experimento es considerado MCU y MCUV?</h2>
+
+                     <div class="video-container">
+
+                     <video width="200" height="300" controls autoplay muted>
+ 		     <source src="Video explicativo.mp4" type="video/mp4">
+                     </video>
+
+		     </div>
+    <div class="video-container">
+<section id="topics" class="topics">
+            <h2 class="section-title">Realiza tu experimento paso a paso</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MXhBTAbiSsk?si=KYNBYSjNx9xmTMIZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </div>  
+
+            <section id="topics" class="topics">
+            <h2 class="section-title">Realiza pruebas y observa los resultados</h2>
+
+                     <div class="video-container">
+                     <video width="200" height="300" controls autoplay muted>
+ 		     <source src="resultado.mp4" type="video/mp4">
+                     </video>
+
+		     </div>
+
+		</section>
+      
+        <!-- Sección de materiales de estudio -->
+        <section class="materials">
+            <h2 class="section-title">Materiales de estudio</h2>
+            <div class="materials-grid">
+                <!-- Material 1 -->
+                <div class="material-item">
+                    <div class="material-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div>
+                        <h4>Libro de texto</h4>
+                        <p>Fundamentos de Física</p>
+                    </div>
+                </div>
+                
+                <!-- Material 3 -->
+                <div class="material-item">
+                    <div class="material-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div>
+                        <h4>Prácticas de laboratorio</h4>
+                        <p>Experimentos guiados</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección de movimiento -->
+        <section>
+            <h2 class="section-title">¿Quieres prepar la receta para las burbujas?</h2>
+            
+            <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between;">
+                <!-- Tipo de movimiento 1 -->
+                <div style="flex: 1; min-width: 300px; background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    <h3 style="color: var(--dark-color); margin-bottom: 15px;">Dale click aquí</h3>
+                   <a href="cursos de quimibio.html">Receta</a>
+                </div>
+                
+                          </div>
+        </section>
+    </main>
+    
+    <!-- Pie de página simplificado -->
+    <footer>
+        <p>&copy; 2025 EduPortal - Curso de Física</p>
+    </footer>
+</body>
+</html>

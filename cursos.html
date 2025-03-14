@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos - Portal Educativo</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+        }
+        
+        /* Paleta de colores educativa */
+        :root {
+            --primary-color: #1a5cb0;       /* Azul principal */
+            --secondary-color: #3f8cf3;     /* Azul secundario */
+            --accent-color: #4dc4ff;        /* Azul acento */
+            --light-color: #e6f3ff;         /* Azul claro */
+            --dark-color: #0a2d59;          /* Azul oscuro */
+            --text-color: #333333;          /* Color de texto */
+        }
+        
+        /* Barra de navegación */
+        .navbar {
+            background-color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            height: 50px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 100%;
+        }
+        
+        .logo-text {
+            margin-left: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Contenido principal */
+        .main-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        /* Áreas de cursos */
+        .course-areas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .course-image {
+            height: 180px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .course-content {
+            padding: 20px;
+        }
+        
+        .course-category {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .course-title {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .course-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .course-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 15px;
+        }
+        
+        .course-btn {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .course-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media screen and (max-width: 1100px) {
+            .course-areas {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .course-areas {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .course-areas {
+                grid-template-columns: 1fr;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+             img{
+                 text-align:center;
+              }
+
+    </style>
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación con logo y enlaces -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+             <img src="logotipo.jpeg" alt="Imagen de Ejemplo" width="60" height="30">
+            <div class="logo-text">EduPortal</div>
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="cursos.html">Cursos</a>
+            
+            <a href="conocenos.html">Conocenos</a>
+        </div>
+    </nav>
+    
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <h1 class="page-title">Explora nuestras áreas de cursos</h1>
+        <p class="page-subtitle">Descubre una amplia variedad de cursos diseñados para potenciar tu aprendizaje y desarrollo profesional.</p>
+        
+        <!-- Grid de áreas de cursos -->
+        <div class="course-areas">
+            <!-- Área 1: Física -->
+            <div class="course-card">
+               <img src="Fisica.jpg" alt="Imagen de Ejemplo" width="275" height="200">
+                <div class="course-content">
+                    <div class="course-category">Física</div>
+                    <h3 class="course-title">MCUV</h3>
+                    <p class="course-description">Aprende que es MCUV, como es que se ve en la vida diaria y un ejemplo casero que podemos hacer en casa.</p>
+                    <div class="course-stats">
+                      <a href="cursos de fisica.html" class="course-btn">Ver cursos</a>  
+                    </div>
+                
+                </div>
+            </div>
+            
+            <!-- Área 2: Química y Biología -->
+            <div class="course-card">
+                 <img src="quimica y biologia.jpg" alt="Imagen de Ejemplo" width="275" height="200">
+                <div class="course-content">
+                    <div class="course-category">Química y Biología</div>
+                    <h3 class="course-title">Experimentos</h3>
+                    <p class="course-description">Aprende a crear distintas recetas para elaborar burbujas caseras, en la que explicaremos de igual manera la acción de los puentes de Hidrógeno.</p>
+                    <div class="course-stats">
+                     
+                    </div>
+                    <a href="cursos de quimibio.html" class="course-btn">Ver cursos</a>
+                </div>
+            </div>
+            
+            <!-- Área 3: Literatura -->
+            <div class="course-card">
+                <img src="literatura.jpg" alt="Imagen de Ejemplo" width="275" height="200">
+                <div class="course-content">
+                    <div class="course-category">Literatura</div>
+                    <h3 class="course-title">Publicidad</h3>
+                    <p class="course-description">Estrategias efectivas para promocionar productos en el mundo digital, como también a reconocer cuando es considerada publicidad.</p>
+                    <div class="course-stats">
+                        
+                    </div>
+                    <a href="cursos de literatura.html" class="course-btn">Ver cursos</a>
+                </div>
+            </div>
+            
+            <!-- Área 4: Valores -->
+            <div class="course-card">
+                <img src="valores.jpg" alt="Imagen de Ejemplo" width="275" height="200">
+                <div class="course-content">
+                    <div class="course-category">Valores</div>
+                    <h3 class="course-title">Trabajo en equipo.</h3>
+                    <p class="course-description">Aprende sobre los valores son fundamentales en los trabajos en equipo y como puede mejorar nuestra relación con los compañeros.</p>
+                    <div class="course-stats">
+                       
+                    </div>
+                    <a href="cursos de valores.html" class="course-btn">Ver cursos</a>
+                </div>
+            </div>
+            
+            <!-- Área 5: Inglés -->
+            <div class="course-card">
+                <img src="ingles.jpg" alt="Imagen de Ejemplo" width="275" height="200">
+                <div class="course-content">
+                    <div class="course-category">Inglés</div>
+                    <h3 class="course-title">Audio Advertising</h3>
+                    <p class="course-description">Learn how to make audio advertising in English and how it can influence people, of course without forgetting an example.</p>
+                    <div class="course-stats">
+                    </div>
+                    <a href="ingles.html" class="course-btn">Ver cursos</a>
+                </div>
+            </div>
+            
+            <!-- Área 6: Expresión Artística/Diseño -->
+            <div class="course-card">
+                <img src="expresion.jpg" alt="Imagen de Ejemplo" width="275" height="200">
+                <div class="course-content">
+                    <div class="course-category">Expresión Artística/Diseño</div>
+                    <h3 class="course-title">Arte y Creatividad</h3>
+                    <p class="course-description">Diseño de cartel con la fórmula molecular del azúcar y su interacción con el agua a través de puentes de hidrógeno
+ y el diseño del el logo del Sitio Web.</p>
+                    <div class="course-stats">
+                    </div>
+                    <a href="artes.html" class="course-btn">Ver cursos</a>
+                </div>
+            </div>
+            
+            <!-- Área 7: Estadistica -->
+            <div class="course-card">
+                <img src="estadistica.jpg" alt="Imagen de Ejemplo" width="275" height="200">
+                <div class="course-content">
+                    <div class="course-category">Estadística</div>
+                    <h3 class="course-title">Comentarios</h3>
+                    <p class="course-description">Recolección de datos, darle un análisis profundo a los resultados obtenidos y elabora gráficos que resuman esto.</p>
+                    <div class="course-stats">
+                    </div>
+                    <a href="estadistica.html" class="course-btn">Ver cursos</a>
+                </div>
+            </div>
+            
+        
+        </div>
+    </div>
+    
+    <script>
+        // JavaScript para mejorar la interactividad
+        document.addEventListener('DOMContentLoaded', function() {
+            // Destacar el enlace activo en la navegación
+            const currentPage = window.location.pathname.split("/").pop();
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+                    link.style.color = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
+                    link.style.fontWeight = '700';
+                }
+            });
+            
+            // Animación para las tarjetas de cursos
+            const courseCards = document.querySelectorAll('.course-card');
+            courseCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

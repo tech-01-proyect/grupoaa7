@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Educativo</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+        }
+        
+        /* Paleta de colores educativa */
+        :root {
+            --primary-color: #1a5cb0;       /* Azul principal */
+            --secondary-color: #3f8cf3;     /* Azul secundario */
+            --accent-color: #4dc4ff;        /* Azul acento */
+            --light-color: #e6f3ff;         /* Azul claro */
+            --dark-color: #0a2d59;          /* Azul oscuro */
+            --text-color: #333333;          /* Color de texto */
+            --text-color-2: white;          /* Corregido nombre de variable */
+        }
+        
+        /* Barra de navegación */
+        .navbar {
+            background-color: #2874a6;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            height: 50px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 100%;
+        }
+        
+        .logo-text {
+            margin-left: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: Black;
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .explore-btn {
+            background-color: white;  /* Corregido */
+            color: Black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .explore-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .explore-btn i {
+            margin-right: 8px;
+        }
+        
+        /* Carrusel */
+        .carousel-container {
+            width: 100%;
+            height: calc(100vh - 80px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .slide-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .slide-content {
+            position: relative;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
+            z-index: 2;
+        }
+        
+        .slide-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .slide-content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+        
+        .slide-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .slide-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .carousel-dot.active {
+            background-color: white;
+        }
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 3;
+        }
+        
+        .carousel-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .carousel-arrow.prev {
+            left: 20px;
+        }
+        
+        .carousel-arrow.next {
+            right: 20px;
+        }
+        
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 15px;
+            }
+            
+            .slide-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .slide-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación con logo y botón de explorar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="Logotipo.jpeg" alt="Logo EduPortal">
+            <div class="logo-text">EduPortal</div>
+        </div>
+        <div class="search-container">
+            <button class="explore-btn">
+                <a href="cursos.html" class="btn btn-primary">Explorar áreas</a>
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Carrusel principal -->
+    <div class="carousel-container">
+        <div class="carousel">
+            <!-- Slide 1 -->
+            <div class="slide">
+                <img src="Generador.jpeg" alt="MCUV" class="slide-image">
+                <div class="slide-content">
+                    <h2>¿MCUV? ¿Qué es?</h2>
+                    <p>Descubre que significa, como funciona y donde podemos verlo.</p>
+                    <a href="cursos de fisica.html" button class="slide-btn">Comenzar ahora</button></a>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="cursos2.jpg" alt="Cursos para todos" class="slide-image">
+                <div class="slide-content">
+                    <h2>Cursos para todos</h2>
+                    <p>Contamos con programas para todas las edades y niveles. Encuentra el curso perfecto para ti.</p>
+                    <a href="cursos.html" button class="slide-btn">Ver Cursos</button></a>               
+ </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="estadistica.jpg" alt="Cono" class="slide-image">
+                <div class="slide-content">
+                    <h2>Conócenos</h2>
+                    <p>¿Quiénes somos?</p>
+                    <a href="conocenos.html" button class="slide-btn">Empezar</button></a>
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- Controles del carrusel -->
+        <div class="carousel-nav">
+            <div class="carousel-dot active"></div>
+            <div class="carousel-dot"></div>
+            <div class="carousel-dot"></div>
+        </div>
+        
+        <div class="carousel-arrow prev">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="carousel-arrow next">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+    
+    <script>
+        // JavaScript para el funcionamiento del carrusel
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevBtn = document.querySelector('.carousel-arrow.prev');
+            const nextBtn = document.querySelector('.carousel-arrow.next');
+            
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            
+            // Función para mostrar un slide específico
+            function showSlide(index) {
+                if (index < 0) index = slideCount - 1;
+                if (index >= slideCount) index = 0;
+                
+                carousel.style.transform = `translateX(-${index * 100}%)`;
+                
+                // Actualizar dots
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+                
+                currentSlide = index;
+            }
+            
+            // Event listeners para los botones de navegación
+            prevBtn.addEventListener('click', () => {
+                showSlide(currentSlide - 1);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                showSlide(currentSlide + 1);
+            });
+            
+            // Event listeners para los dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+            
+            // Autoplay del carrusel
+            setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
