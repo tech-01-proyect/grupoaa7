@@ -583,16 +583,19 @@
             function renderCharts() {
                 const ratings = JSON.parse(localStorage.getItem('ratings'));
                 
-                createPieChart('usefulnessChart', ratings.usefulness, '¿Te resultó útil esta página?');
-                createPieChart('loadingChart', ratings.loading, '¿La página cargó rápidamente en tu navegador?');
-                createPieChart('clarityChart', ratings.clarity, '¿La información en la página fue clara y fácil de entender?');
-                createPieChart('designChart', ratings.design, '¿La página tenía un diseño atractivo y visualmente agradable?');
-                createPieChart('navigationChart', ratings.navigation, '¿Fue fácil navegar por la página y encontrar la información de los cursos?');
-                createPieChart('experimentChart', ratings.experiment, '¿Consideras que el experimento fue explicado de manera clara y concisa?');
-                createPieChart('ageAppropriateChart', ratings.ageAppropriate, '¿Consideras que la página es apta para todas las edades?');
-                createPieChart('problemsChart', ratings.problems, '¿Experimentaste algún problema durante tu navegación en la página?');
-                createPieChart('revisitChart', ratings.revisit, '¿Te gustaría volver a visitar esta página en el futuro?');
-                createPieChart('recommendChart', ratings.recommend, '¿Recomendarías esta página a amigos o familiares?');
+                createPieChart('usefulnessChart', ratings.usefulness, '¿Consideras que el Sitio Web es apto para niños menores de 10 años?
+');
+                createPieChart('loadingChart', ratings.loading, ' ¿Consideras que la información presentada es comprensible para los lectores?');
+                createPieChart('clarityChart', ratings.clarity, '¿Consideras que el Sitio Web puede generar un impacto a los estudiantes?');
+                createPieChart('designChart', ratings.design, '¿Consideras que nuestro Sitio Web cuenta con el contenido suficiente para poder informar sobre los temas presentados?');
+                createPieChart('navigationChart', ratings.navigation, '¿Consideras que nuestro Sitio Web puede ser utilizado en otras instituciones educativas?');
+                createPieChart('experimentChart', ratings.experiment, '¿Consideras que nuestro Sitio Web es llamativo?');
+                createPieChart('ageAppropriateChart', ratings.ageAppropriate, '¿Consideras que te resulto fácil navegar en nuestro Sitio Web?');
+                createPieChart('problemsChart', ratings.problems, '¿Considera que nuestro Sitio Web necesita alguna modificación?');
+                createPieChart('revisitChart', ratings.revisit, '¿Recomendarías este Sitio Web a otro estudiante?');
+                createPieChart('recommendChart', ratings.recommend, ' ¿Volverías a utilizar este Sitio Web en el futuro?');
+		createPieChart('recommendChart', ratings.recommend, ' ¿Cómo calificarías la experiencia de navegación en el Sitio Web?');
+		    
             }
 
             // Función para añadir algunos datos de ejemplo (solo para demostración)
