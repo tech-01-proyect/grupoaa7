@@ -162,13 +162,12 @@
     <!-- Incluir Chart.js para las gráficas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
+<body>
     <header>
-<img src="logotipo.jpeg" alt="Logo" class="logo">
+        <img src="logotipo.jpeg" alt="Logo" class="logo">
         <h1>Curso de Estadística</h1>
         <p class="subtitle">Encuesta</p>
     </header>
-<body>
-    
 
     <!-- Introducción -->
     <div class="introduccion">
@@ -352,13 +351,13 @@
             <canvas id="usefulnessChart"></canvas>
         </div>
 
-        <div class="chart-container">
+       <div class="chart-container">
             <h3>2. ¿Consideras que la información presentada es comprensible para los lectores?</h3>
             <canvas id="loadingChart"></canvas>
         </div>
 
         <div class="chart-container">
-            <h3>3. ¿Consideras que el Sitio Web puede generar un impacto a los estudiantes??</h3>
+            <h3>3. ¿Consideras que el Sitio Web puede generar un impacto a los estudiantes?</h3>
             <canvas id="clarityChart"></canvas>
         </div>
 
@@ -367,34 +366,34 @@
             <canvas id="designChart"></canvas>
         </div>
 
-<div class="chart-container">
-    <h3>5. ¿Consideras que nuestro Sitio Web puede ser utilizado en otras instituciones educativas?</h3>
-    <canvas id="navigationChart"></canvas>
-</div>
-
-<div class="chart-container">
-    <h3>6. ¿Consideras que te resulto fácil navegar en nuestro Sitio Web?</h3>
-    <canvas id="experimentChart"></canvas>
-</div>
-
-<div class="chart-container">
-    <h3>7. ¿Consideras que nuestro Sitio Web es llamativo?</h3>
-    <canvas id="experimentChart"></canvas>
-</div>
+        <div class="chart-container">
+            <h3>5. ¿Consideras que nuestro Sitio Web puede ser utilizado en otras instituciones educativas?</h3>
+            <canvas id="navigationChart"></canvas>
+        </div>
 
         <div class="chart-container">
-            <h3>8. ¿Considera que nuestro Sitio Web necesita alguna modificación?</h3>
+            <h3>6. ¿Consideras que nuestro Sitio Web es llamativo?</h3>
+            <canvas id="experimentChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h3>7. ¿Consideras que te resulto fácil navegar en nuestro Sitio Web?</h3>
             <canvas id="ageAppropriateChart"></canvas>
         </div>
 
         <div class="chart-container">
-            <h3>9. ¿Recomendarías este Sitio Web a otro estudiante?</h3>
+            <h3>8. ¿Considera que nuestro Sitio Web necesita alguna modificación?</h3>
             <canvas id="problemsChart"></canvas>
         </div>
 
         <div class="chart-container">
-            <h3>10. ¿Volverías a utilizar este Sitio Web en el futuro?</h3>
+            <h3>9. ¿Recomendarías este Sitio Web a otro estudiante?</h3>
             <canvas id="revisitChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h3>10. ¿Volverías a utilizar este Sitio Web en el futuro?</h3>
+            <canvas id="recommendChart"></canvas>
         </div>
         
         <div class="admin-buttons">
@@ -561,7 +560,7 @@
                 const ratings = JSON.parse(localStorage.getItem('ratings'));
                 
                 createPieChart('usefulnessChart', ratings.usefulness, '¿Consideras que el Sitio Web es apto para niños menores de 10 años?');
-                createPieChart('loadingChart', ratings.loading, ' ¿Consideras que la información presentada es comprensible para los lectores?');
+                createPieChart('loadingChart', ratings.loading, '¿Consideras que la información presentada es comprensible para los lectores?');
                 createPieChart('clarityChart', ratings.clarity, '¿Consideras que el Sitio Web puede generar un impacto a los estudiantes?');
                 createPieChart('designChart', ratings.design, '¿Consideras que nuestro Sitio Web cuenta con el contenido suficiente para poder informar sobre los temas presentados?');
                 createPieChart('navigationChart', ratings.navigation, '¿Consideras que nuestro Sitio Web puede ser utilizado en otras instituciones educativas?');
@@ -569,9 +568,7 @@
                 createPieChart('ageAppropriateChart', ratings.ageAppropriate, '¿Consideras que te resulto fácil navegar en nuestro Sitio Web?');
                 createPieChart('problemsChart', ratings.problems, '¿Considera que nuestro Sitio Web necesita alguna modificación?');
                 createPieChart('revisitChart', ratings.revisit, '¿Recomendarías este Sitio Web a otro estudiante?');
-                createPieChart('recommendChart', ratings.recommend, ' ¿Volverías a utilizar este Sitio Web en el futuro?');
-		createPieChart('recommendChart', ratings.recommend, ' ¿Cómo calificarías la experiencia de navegación en el Sitio Web?');
-		    
+                createPieChart('recommendChart', ratings.recommend, '¿Volverías a utilizar este Sitio Web en el futuro?');
             }
 
             // Función para añadir algunos datos de ejemplo (solo para demostración)
@@ -654,3 +651,5 @@
     </script>
 </body>
 </html>
+
+               
