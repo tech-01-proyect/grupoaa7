@@ -560,8 +560,7 @@
             function renderCharts() {
                 const ratings = JSON.parse(localStorage.getItem('ratings'));
                 
-                createPieChart('usefulnessChart', ratings.usefulness, '¿Consideras que el Sitio Web es apto para niños menores de 10 años?
-');
+                createPieChart('usefulnessChart', ratings.usefulness, '¿Consideras que el Sitio Web es apto para niños menores de 10 años?');
                 createPieChart('loadingChart', ratings.loading, ' ¿Consideras que la información presentada es comprensible para los lectores?');
                 createPieChart('clarityChart', ratings.clarity, '¿Consideras que el Sitio Web puede generar un impacto a los estudiantes?');
                 createPieChart('designChart', ratings.design, '¿Consideras que nuestro Sitio Web cuenta con el contenido suficiente para poder informar sobre los temas presentados?');
